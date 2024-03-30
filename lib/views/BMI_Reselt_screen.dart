@@ -1,7 +1,16 @@
+import 'package:bmi/helper/Custom_cotainer.dart';
+import 'package:bmi/helper/contest.dart';
+import 'package:bmi/views/BMI_SCREEN.dart';
 import 'package:flutter/material.dart';
 
 class BMI_Reselt_screen extends StatelessWidget {
-  const BMI_Reselt_screen({super.key, required this.isMale, required this.age, required this.height, required this.weight, required this.result});
+  const BMI_Reselt_screen(
+      {super.key,
+      required this.isMale,
+      required this.age,
+      required this.height,
+      required this.weight,
+      required this.result});
   final bool isMale;
   final double age;
   final double height;
@@ -10,19 +19,19 @@ class BMI_Reselt_screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black87,
-      appBar: AppBar(
-        foregroundColor: isMale ? Colors.blue : Colors.red,
-        backgroundColor: Colors.black87,
-        elevation: 0,
-        title: const Text(
-          'RESULT',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
+      // appBar: AppBar(
+      //   foregroundColor: isMale ? Colors.blue : Colors.red,
+      //   backgroundColor: Colors.black87,
+      //   elevation: 0,
+      //   title: const Text(
+      //     'RESULT',
+      //     style: TextStyle(color: Colors.white),
+      //   ),
+      // ),
       body: Container(
-        color: Colors.black87,
+        color: Colors.black87.withOpacity(0.2),
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -30,6 +39,9 @@ class BMI_Reselt_screen extends StatelessWidget {
               width: double.infinity,
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 100,
+                  ),
                   Container(
                     padding: const EdgeInsets.all(10),
                     width: double.infinity,
@@ -41,11 +53,9 @@ class BMI_Reselt_screen extends StatelessWidget {
                       children: [
                         Image(
                           height: 60,
-                          color: isMale ? Colors.blue : Colors.red,
+                          // color: isMale ? meColor: FeColor,
                           image: AssetImage(
-                            isMale
-                                ? 'assats/man.png'
-                                : 'assats/woman.png',
+                            isMale ? 'assets/man.png' : 'assets/woman.png',
                           ),
                         ),
                         const SizedBox(height: 15),
@@ -61,105 +71,23 @@ class BMI_Reselt_screen extends StatelessWidget {
                         Row(
                           children: [
                             Expanded(
-                              child: Container(
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey[100],
-                                ),
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 5),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        'AGE',
-                                        style: TextStyle(
-                                            color: Colors.grey[800],
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      Text(
-                                        '${age.round()}',
-                                        style: TextStyle(
-                                            color: currentColor(),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                                child: Custome_container(
+                                    Titel: 'Age',
+                                    data: '${age.round()}',
+                                    isMale: isMale)),
                             const SizedBox(width: 10),
                             Expanded(
-                              child: SingleChildScrollView(
-                                child: Container(
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100],
-                                  ),
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 5),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          'HEIGHT',
-                                          style: TextStyle(
-                                              color: Colors.grey[800],
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const SizedBox(height: 5),
-                                        Text(
-                                          '${height.round()}',
-                                          style: TextStyle(
-                                              color: currentColor(),
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+                                child: Custome_container(
+                              Titel: 'HEIGHT',
+                              data: '${height.round()}',
+                              isMale: isMale,
+                            )),
                             const SizedBox(width: 10),
                             Expanded(
-                              child: Container(
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey[100],
-                                ),
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 5),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        'WEIGHT',
-                                        style: TextStyle(
-                                            color: Colors.grey[800],
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      Text(
-                                        '${weight.round()}',
-                                        style: TextStyle(
-                                            color: currentColor(),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                                child: Custome_container(
+                                    Titel: 'weight',
+                                    data: '${weight.round()}',
+                                    isMale: isMale))
                           ],
                         ),
                       ],
@@ -178,75 +106,50 @@ class BMI_Reselt_screen extends StatelessWidget {
                     child: Row(
                       children: [
                         Expanded(
-                          child: Container(
-                            height: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.grey[100],
-                            ),
-                            padding: const EdgeInsets.symmetric(vertical: 5),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'BMI',
-                                  style: TextStyle(
-                                      color: Colors.grey[800],
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(height: 5),
-                                Expanded(
-                                  child: Center(
-                                    child: Text(
-                                      '${result.round()}',
-                                      style: TextStyle(
-                                          color: currentColor(),
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                            child: Custome_container(
+                          Titel: 'BMI',
+                          data: '${result.round()}',
+                          isMale: isMale,
+                        )),
                         const SizedBox(width: 10),
                         Expanded(
-                          child: Container(
-                            height: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.grey[100],
-                            ),
-                            padding: const EdgeInsets.symmetric(vertical: 5),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'STATUS',
-                                  style: TextStyle(
-                                      color: Colors.grey[800],
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(height: 5),
-                                Expanded(
-                                  child: Center(
-                                    child: Text(
-                                      statusText(),
-                                      style: TextStyle(
-                                          color: currentColor(),
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                            child: Custome_container(
+                          Titel: 'STATUS',
+                          data: '${statusText()}',
+                          isMale: isMale,
+                        )),
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: 25,
+                  ),
+
+
+                  
+                  
+//                   GestureDetector(
+// onTap: () {
+//           Navigator.pop(context,
+//               MaterialPageRoute(builder: (context) => Bmi_Screen()));
+//         },                    child: Container(
+//                       height: 50,
+//                       decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(10),
+//                         color: isMale ? meColor : FeColor,
+//                       ),
+//                       width: MediaQuery.of(context).size.width / 2,
+//                       child: const Center(
+//                         child: Text(
+//                           'Anther BMI',
+//                           style: TextStyle(
+//                               color: Colors.white,
+//                               fontSize: 15,
+//                               fontWeight: FontWeight.bold),
+//                         ),
+//                       ),
+//                     ),
+//                   ),
                 ],
               ),
             ),
@@ -256,7 +159,7 @@ class BMI_Reselt_screen extends StatelessWidget {
     );
   }
 
-  Color currentColor() => isMale ? Colors.blue : Colors.red;
+  Color currentColor() => isMale ? meColor : FeColor;
 
   String statusText() {
     if (result <= 16) {
