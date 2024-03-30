@@ -1,4 +1,5 @@
 import 'package:bmi/helper/Custom_cotainer.dart';
+import 'package:bmi/helper/Custom_massage.dart';
 import 'package:bmi/helper/contest.dart';
 import 'package:bmi/views/BMI_SCREEN.dart';
 import 'package:flutter/material.dart';
@@ -21,18 +22,19 @@ class BMI_Reselt_screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black87,
-      // appBar: AppBar(
-      //   foregroundColor: isMale ? Colors.blue : Colors.red,
-      //   backgroundColor: Colors.black87,
-      //   elevation: 0,
-      //   title: const Text(
-      //     'RESULT',
-      //     style: TextStyle(color: Colors.white),
-      //   ),
-      // ),
-      body: Container(
-        color: Colors.black87.withOpacity(0.2),
-        child: SingleChildScrollView(
+      appBar: AppBar(
+        foregroundColor: isMale ? meColor : FeColor,
+        backgroundColor: Colors.black87,
+        elevation: 0,
+        title: const Text(
+          'RESULT',
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.black87.withOpacity(0.2),
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Container(
@@ -40,7 +42,7 @@ class BMI_Reselt_screen extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 100,
+                    height: 70,
                   ),
                   Container(
                     padding: const EdgeInsets.all(10),
@@ -122,34 +124,12 @@ class BMI_Reselt_screen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 25,
+                    height: 10,
                   ),
-
-
-                  
-                  
-//                   GestureDetector(
-// onTap: () {
-//           Navigator.pop(context,
-//               MaterialPageRoute(builder: (context) => Bmi_Screen()));
-//         },                    child: Container(
-//                       height: 50,
-//                       decoration: BoxDecoration(
-//                         borderRadius: BorderRadius.circular(10),
-//                         color: isMale ? meColor : FeColor,
-//                       ),
-//                       width: MediaQuery.of(context).size.width / 2,
-//                       child: const Center(
-//                         child: Text(
-//                           'Anther BMI',
-//                           style: TextStyle(
-//                               color: Colors.white,
-//                               fontSize: 15,
-//                               fontWeight: FontWeight.bold),
-//                         ),
-//                       ),
-//                     ),
-//                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Custom_massage(State: statusText(), isMale: isMale),
+                  )
                 ],
               ),
             ),
@@ -162,22 +142,14 @@ class BMI_Reselt_screen extends StatelessWidget {
   Color currentColor() => isMale ? meColor : FeColor;
 
   String statusText() {
-    if (result <= 16) {
-      return "Severe Thinness";
-    } else if (result > 16 && result <= 17) {
-      return "Moderate Thinness";
-    } else if (result > 17 && result <= 18.5) {
-      return "Mild Thinness";
+    if (result <= 18.5) {
+      return "Underweight";
     } else if (result > 18.5 && result <= 25) {
-      return "Normal";
+      return "Normal weight";
     } else if (result > 25 && result <= 30) {
       return "Overweight";
-    } else if (result > 30 && result <= 35) {
-      return "Obese Class I";
-    } else if (result > 35 && result <= 40) {
-      return "Obese Class II";
     } else {
-      return "Obese Class III";
+      return "Obese ";
     }
   }
 }

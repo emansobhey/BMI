@@ -57,9 +57,7 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
         elevation: 0,
         title: Text(
           'BMI Calculator'.toUpperCase(),
-          style: const TextStyle(
-            fontSize: 30,
-          ),
+          style: const TextStyle(fontSize: 30, color: Colors.black),
         ),
         centerTitle: true,
       ),
@@ -81,7 +79,7 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: isMale ?meColor : Colors.grey[400],
+                              color: isMale ? meColor : Colors.grey[400],
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -113,14 +111,15 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: isMale ? Colors.grey[400]
-                              : const Color.fromARGB(255, 230, 98, 142),
+                              color: isMale
+                                  ? Colors.grey[400]
+                                  : const Color.fromARGB(255, 230, 98, 142),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image(
-                                  // color: !isMale ? Colors.white 
+                                  // color: !isMale ? Colors.white
                                   // : Colors.red,
                                   image: const AssetImage('assets/woman.png'),
                                   height: 50,
@@ -131,8 +130,9 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
                                   'FEMALE',
                                   style: TextStyle(
                                       fontSize: 24,
-                                      color:
-                                          !isMale ? Colors.white :  Color.fromARGB(255, 230, 98, 142),
+                                      color: !isMale
+                                          ? Colors.white
+                                          : Color.fromARGB(255, 230, 98, 142),
                                       fontWeight: FontWeight.bold),
                                 ),
                               ],
@@ -143,6 +143,17 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
                       ),
                     ],
                   ),
+                ),
+              ),
+              Text(
+                'Height'.toUpperCase(),
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.white.withOpacity(0.3),
+                  // color:
+                  // isMale ?meColor :
+                  //  Color.fromARGB(255, 230, 98, 142),
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Expanded(
@@ -156,16 +167,6 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          'Height'.toUpperCase(),
-                          style: TextStyle(
-                            fontSize: 25,
-                            color:
-                                isMale ?meColor : 
-                                 Color.fromARGB(255, 230, 98, 142),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -175,9 +176,7 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
                               '${height.round()}',
                               style: TextStyle(
                                 fontSize: 40,
-                                color: isMale
-                                    ? meColor
-                                    :FeColor,
+                                color: isMale ? meColor : FeColor,
                                 fontWeight: FontWeight.w900,
                               ),
                             ),
@@ -197,9 +196,8 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
                           min: 100,
                           max: 220,
                           value: height,
-                          thumbColor: isMale ?meColor : FeColor,
-                          activeColor:
-                              isMale ? meColor :FeColor,
+                          thumbColor: isMale ? meColor : FeColor,
+                          activeColor: isMale ? meColor : FeColor,
                           inactiveColor: Colors.white30,
                           onChanged: (value) => height = value,
                         ),
@@ -208,135 +206,125 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
                   ),
                 ),
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.grey[400],
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'AGE',
-                                  style: TextStyle(
-                                    color: isMale
-                                        ? meColor
-                                        : FeColor,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  '${age.round()}',
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                    color: isMale
-                                        ? meColor
-                                        :FeColor,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    FloatingActionButton(
-                                      elevation: 0,
-                                      heroTag: 'age-',
-                                      mini: true,
-                                      backgroundColor:
-                                          isMale ? meColor 
-                                          : FeColor,
-                                      onPressed: () => age--,
-                                      child: const Icon(Icons.remove),
-                                    ),
-                                    FloatingActionButton(
-                                      elevation: 0,
-                                      heroTag: 'age+',
-                                      mini: true,
-                                      backgroundColor:
-                                          isMale ? meColor :
-                                           FeColor,
-                                      onPressed: () => age++,
-                                      child: const Icon(Icons.add),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.grey[400],
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'WEIGHT',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: isMale
-                                        ? meColor
-                                        :FeColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  '${weight.round()}',
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                    color: isMale
-                                        ? meColor
-                                        : FeColor,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    FloatingActionButton(
-                                      elevation: 0,
-                                      heroTag: 'weight-',
-                                      mini: true,
-                                      backgroundColor:
-                                          isMale ?meColor
-                                          : FeColor,
-                                      onPressed: () => weight--,
-                                      child: const Icon(Icons.remove),
-                                    ),
-                                    FloatingActionButton(
-                                      elevation: 0,
-                                      heroTag: 'weight+',
-                                      mini: true,
-                                      backgroundColor:
-                                          isMale ? meColor 
-                                          :FeColor,
-                                      onPressed: () => weight++,
-                                      child: const Icon(Icons.add),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+              SizedBox(
+                height: 25,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    '          AGE ',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.3),
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    width: 80,
+                  ),
+                  Text(
+                    '       WEIGHT',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white.withOpacity(0.3),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[400],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '${age.round()}',
+                              style: TextStyle(
+                                fontSize: 40,
+                                color: isMale ? meColor : FeColor,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FloatingActionButton(
+                                  elevation: 0,
+                                  heroTag: 'age-',
+                                  mini: true,
+                                  backgroundColor: isMale ? meColor : FeColor,
+                                  onPressed: () => age--,
+                                  child: const Icon(Icons.remove),
+                                ),
+                                FloatingActionButton(
+                                  elevation: 0,
+                                  heroTag: 'age+',
+                                  mini: true,
+                                  backgroundColor: isMale ? meColor : FeColor,
+                                  onPressed: () => age++,
+                                  child: const Icon(Icons.add),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[400],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '${weight.round()}',
+                              style: TextStyle(
+                                fontSize: 40,
+                                color: isMale ? meColor : FeColor,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FloatingActionButton(
+                                  elevation: 0,
+                                  heroTag: 'weight-',
+                                  mini: true,
+                                  backgroundColor: isMale ? meColor : FeColor,
+                                  onPressed: () => weight--,
+                                  child: const Icon(Icons.remove),
+                                ),
+                                FloatingActionButton(
+                                  elevation: 0,
+                                  heroTag: 'weight+',
+                                  mini: true,
+                                  backgroundColor: isMale ? meColor : FeColor,
+                                  onPressed: () => weight++,
+                                  child: const Icon(Icons.add),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Padding(
                 padding:
@@ -345,8 +333,7 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
                   height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: isMale ?meColor 
-                    : FeColor,
+                    color: isMale ? meColor : FeColor,
                   ),
 
                   width: double.infinity,
