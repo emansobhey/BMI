@@ -14,11 +14,11 @@ class Bmi_Screen extends StatefulWidget {
 class _Bmi_ScreenState extends State<Bmi_Screen> {
   bool _isMale = true;
 
-  double _height = 120;
+  double _height = 160;
 
-  double _age = 20;
+  double _age = 21;
 
-  double _weight = 40;
+  double _weight = 55;
 
   double? result;
 
@@ -54,12 +54,15 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+      backgroundColor: Colors.black87,
         elevation: 0,
         title: Text(
           'BMI Calculator'.toUpperCase(),
-          style: const TextStyle(fontSize: 30, color: Colors.black),
+          style: const TextStyle(fontSize: 30, color: Colors.white),
         ),
         centerTitle: true,
+        automaticallyImplyLeading: false,
+        
       ),
       body: Container(
         height: double.infinity,
@@ -113,7 +116,7 @@ class _Bmi_ScreenState extends State<Bmi_Screen> {
                               borderRadius: BorderRadius.circular(20),
                               color: isMale
                                   ? Colors.grey[400]
-                                  : const Color.fromARGB(255, 230, 98, 142),
+                                  : FeColor,
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,

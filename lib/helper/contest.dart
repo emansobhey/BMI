@@ -1,4 +1,4 @@
 import 'dart:ui';
 
-const FeColor = Color.fromARGB(255, 230, 98, 142);
-const meColor = const Color.fromARGB(255, 138, 172, 231);
+const FeColor = Color.fromARGB(255, 243, 140, 175);
+const meColor = Color(0xff00A9F5);
